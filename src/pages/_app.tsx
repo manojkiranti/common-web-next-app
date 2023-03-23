@@ -8,7 +8,10 @@ import { CacheProvider } from '@emotion/react'
 import type { EmotionCache } from '@emotion/cache'
 
 // ** Config Imports
-import themeConfig from '@/configs/themeConfig'
+import appConfig from '@/configs/appConfig'
+
+// ** Component Imports
+import ThemeComponent from '@/@core/theme/ThemeComponent'
 
 // ** Utils Imports
 import { createEmotionCache } from '@/@core/utils/createEmotionCache'
@@ -28,14 +31,17 @@ export default function App(props: ExtendedAppProps) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>{`${themeConfig.projectName} - NIC ASIA`}</title>
+        <title>{`${appConfig.projectName} - NIC ASIA`}</title>
         <meta
           name='description'
-          content={`${themeConfig.projectName} A Complete Digital platform for banking services.`}
+          content={`${appConfig.projectName} A Complete Digital platform for banking services.`}
         />
         <meta name='keywords' content='Mobile Banking, Credit Card, Online Banking, Account Opening' />
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
+      <ThemeComponent>
+        <Component {...pageProps} />
+      </ThemeComponent>
     </CacheProvider>
   )
 }
